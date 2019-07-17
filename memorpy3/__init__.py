@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with memorpy.  If not, see <http://www.gnu.org/licenses/>.
 
+__version__ = '2.0.0'
 
 import logging
 
@@ -22,6 +23,3 @@ logger.setLevel(logging.WARNING)
 ch = logging.StreamHandler()
 ch.setLevel(logging.WARNING)
 logger.addHandler(ch)
-
-# if sys.platform=="win32":
-#    from wintools import *  #not a necessary dependency, just used for debugging

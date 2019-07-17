@@ -7,30 +7,48 @@ try:
 except ImportError:
     from distutils.core import setup
 
-if sys.version_info < (2, 5):
-    sys.exit("requires python 2.5 and up")
-if sys.version_info[0] == 3:
-	sys.exit("not compatible python 3")
+if sys.version_info < (3,):
+    sys.exit("requires python 3")
 
-here = os.path.dirname(__file__)
+version = "2.0.0"
 
-exec(open(os.path.join(here, 'memorpy', 'version.py')).read())
-setup(name = "memorpy",
-    version = version_string, #@UndefinedVariable,
-    description = "Python library using ctypes to search/edit windows/linux programs memory",
-    author = "Nicolas VERDIER",
-    author_email = "contact@n1nj4.eu",
-    maintainer_email = "contact@n1nj4.eu",
-    license = "BSD",
-    url = "https://github.com/n1nj4sec/memorpy",
-    packages = [
-        'memorpy',
-    ],
-    install_requires = [],
-    platforms = ["POSIX", "Windows"],
-    use_2to3 = False,
-    zip_safe = False,
-    long_description = open(os.path.join(here, "README.md"), "r").read(),
+if sys.argv[-1] == "publish":
+    try:
+        import wheel
+
+        print("Wheel version: ", wheel.__version__)
+    except ImportError:
+        print('Wheel library missing. Please run "pip install wheel"')
+        sys.exit()
+    os.system("python setup.py sdist upload")
+    os.system("python setup.py bdist_wheel upload")
+    sys.exit()
+
+if sys.argv[-1] == "tag":
+    print("Tagging the version on git:")
+    os.system("git tag -a %s -m 'version %s'" % (version, version))
+    os.system("git push --tags")
+    sys.exit()
+
+
+setup(
+    name="memorpy3",
+    version=version,
+    description="Python 3 port of the memorypy library using ctypes to search/edit windows programs memory",
+    author="Nicolas VERDIER, Reid Castner",
+    author_email="contact@n1nj4.eu, rbcastner@gmail.com",
+    maintainer_email="rbcastner@gmail.com",
+    license="BSD",
+    url="https://github.com/rbcastner/memorpy",
+    include_package_data=True,
+    zip_safe=False,
+    packages=["memorpy3"],
+    install_requires=[],
+    platforms=["Windows"],
+    long_description=open("README.md").read(),
+    long_description_content_type='text/markdown',
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'Intended Audience :: Developers',
+    ]
 )
-
-

@@ -1,14 +1,19 @@
-# memorpy
-Python library using ctypes to search/edit windows/linux/OSX/SunOS programs memory.
+# memorpy3
+
+Python 3 port of memorypy library using ctypes to search/edit windows programs memory.
 
 # install
+
 ```
-pip install https://github.com/n1nj4sec/memorpy/archive/master.zip
+pip install memorpy3
 ```
+
 # usage examples :
+
 In this example open a notepad.exe and type in some text we will edit from memory !
+
 ```python
->>> from memorpy import *
+>>> from memorpy3.MemWorker import MemWorker
 >>> mw=MemWorker(pid=3856) #you can also select a process by its name with the kwarg name=
 >>> l=[x for x in mw.umem_search("hello")]
 >>> l
@@ -60,8 +65,10 @@ u'hello this is a message I typed in notepad.exe !\x00\x00'
 >>> a.read(100).decode("utf-16-le")
 u'pwned this is a message I typed in notepad.exe !\x00\x00'
 ```
+
 Look back at your notepad and the text should be changed ! :)
 A quicker way to do this could be :
+
 ```python
 >>> mw.umem_replace("hello","pwned")
 ```
@@ -77,7 +84,9 @@ Some other interesting features like searching for different values types in mem
 <Addr: 0x0018FDE6>,
 ...]}
 ```
+
 Use some ammo and "refeed" the locator (do this a couple of times until there is one result left)
+
 ```python
 >>> lo.feed(199)
 {'double': [],
@@ -94,19 +103,22 @@ Use some ammo and "refeed" the locator (do this a couple of times until there is
 >>>a.write(999999)
 1
 ```
-Now you have infinite ammo :o)
 
+Now you have infinite ammo :o)
 
 I hope this code will be useful to someone.
 
 Have fun !
+
 ## Other examples
+
 Have a look at [mimipy](https://github.com/n1nj4sec/mimipy) that dumps passwords from various processes memory
 
 ## Contact
-by mail: contact@n1nj4.eu  
-on Twitter: [Follow me on twitter](https://twitter.com/n1nj4sec)  
 
-If some of you want to participate or send me a feedback, don't hesitate :-)  
-  
+by mail: contact@n1nj4.eu
+on Twitter: [Follow me on twitter](https://twitter.com/n1nj4sec)
+
+If some of you want to participate or send me a feedback, don't hesitate :-)
+
 This project is a personal development, please respect its philosophy don't use it for evil purpose !

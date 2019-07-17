@@ -28,7 +28,7 @@ from .Address import Address
 from .BaseProcess import ProcessException
 from .WinStructures import *
 
-logger = logging.getLogger("memorpy")
+logger = logging.getLogger("memorpy3")
 
 REGEX_TYPE = type(re.compile("^plop$"))
 
