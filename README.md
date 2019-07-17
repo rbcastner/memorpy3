@@ -2,13 +2,13 @@
 
 Python 3 port of memorypy library using ctypes to search/edit windows programs memory.
 
-# install
+## install
 
 ```
 pip install memorpy3
 ```
 
-# usage examples :
+## usage examples :
 
 In this example open a notepad.exe and type in some text we will edit from memory !
 
@@ -104,21 +104,14 @@ Use some ammo and "refeed" the locator (do this a couple of times until there is
 1
 ```
 
-Now you have infinite ammo :o)
+## Cutting a release
+```shell
+$ pip install -r requirements-dev.txt
+$ bumpversion major|minor|patch
+$ python setup.py sdist
+$ twine upload dist/*
+```
 
-I hope this code will be useful to someone.
 
-Have fun !
 
-## Other examples
 
-Have a look at [mimipy](https://github.com/n1nj4sec/mimipy) that dumps passwords from various processes memory
-
-## Contact
-
-by mail: contact@n1nj4.eu
-on Twitter: [Follow me on twitter](https://twitter.com/n1nj4sec)
-
-If some of you want to participate or send me a feedback, don't hesitate :-)
-
-This project is a personal development, please respect its philosophy don't use it for evil purpose !

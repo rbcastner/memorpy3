@@ -37,7 +37,7 @@ class MemWorker:
     def __init__(
         self, pid=None, name=None, end_offset=None, start_offset=None, debug=True
     ):
-        self.process = Process.Process(name=name, pid=pid, debug=debug)
+        self.process = Process(name=name, pid=pid, debug=debug)
 
     def __enter__(self):
         return self
